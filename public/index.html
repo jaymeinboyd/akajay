@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>akaJay — Creative work by Jayme Hunt</title>
+  <meta name="description" content="Creative work by Jayme Hunt: art, books, Traveller, and whatever else emerges.">
+  <meta name="theme-color" content="#f4efe7">
+  <style>
+    :root {
+      --paper: #f4efe7;
+      --ink: #27221f;
+      --soft-ink: #625954;
+      --accent: #76566a;
+      --line: #cfc3b8;
+      --wash: #e9dfd5;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(118, 86, 106, .08), transparent 28rem),
+        radial-gradient(circle at 88% 72%, rgba(146, 119, 88, .08), transparent 30rem),
+        var(--paper);
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(860px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: clamp(3.5rem, 10vw, 7rem) 0 3rem;
+    }
+
+    .mark {
+      margin: 0;
+      font-size: clamp(4rem, 14vw, 8.5rem);
+      line-height: .88;
+      font-weight: 400;
+      letter-spacing: -.055em;
+    }
+
+    .mark span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .byline {
+      margin: 1.4rem 0 0;
+      color: var(--soft-ink);
+      font: 700 .76rem/1.4 Arial, sans-serif;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      max-width: 42rem;
+      margin: 3.5rem 0 0;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      line-height: 1.55;
+    }
+
+    main {
+      padding-bottom: 5rem;
+    }
+
+    .work {
+      display: block;
+      padding: 2rem 0 2.2rem;
+      border-top: 1px solid var(--line);
+      text-decoration: none;
+    }
+
+    .work:last-of-type {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .work:hover .title,
+    .work:focus-visible .title {
+      color: var(--accent);
+    }
+
+    .work:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 8px;
+    }
+
+    .title {
+      display: block;
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      line-height: 1.05;
+      font-weight: 400;
+      transition: color .15s ease;
+    }
+
+    .detail {
+      display: block;
+      max-width: 42rem;
+      margin-top: .7rem;
+      color: var(--soft-ink);
+      font: 400 .98rem/1.65 Arial, sans-serif;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: .8rem;
+      color: var(--accent);
+      font: 700 .7rem/1.2 Arial, sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding: 2.4rem 0 3rem;
+      color: var(--soft-ink);
+      font: 400 .8rem/1.7 Arial, sans-serif;
+    }
+
+    .doors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem 1.4rem;
+      margin-bottom: .9rem;
+    }
+
+    .doors a {
+      text-underline-offset: .2em;
+    }
+
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 28px, 860px); }
+      header { padding-top: 3.4rem; }
+      .intro { margin-top: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="mark"><span>aka</span>Jay</h1>
+      <p class="byline">Creative work by Jayme Hunt</p>
+      <p class="intro">
+        Art, books, stories, experiments, and whatever else emerges.
+        This is where the creative work gets to wander.
+      </p>
+    </header>
+
+    <main aria-label="Creative work">
+      <a class="work" href="https://fineartamerica.com/profiles/1-jayme-hunt/shop">
+        <span class="title">Watercolor &amp; Art</span>
+        <span class="detail">Original watercolor work, fine-art prints, greeting cards, and selected pieces.</span>
+        <span class="status">Explore the art →</span>
+      </a>
+
+      <a class="work" href="https://www.lulu.com/shop/jayme-hunt-and-molly-spirit-guide/lessons-from-spirit/paperback/product-45427wn.html?page=1&amp;pageSize=4">
+        <span class="title">Lessons from Spirit</span>
+        <span class="detail"><em>The Five Core Lessons Everyone Needs to Learn</em>, by Molly (Spirit Guide) &amp; Jayme Hunt.</span>
+        <span class="status">Find the book →</span>
+      </a>
+
+      <div class="work">
+        <span class="title">Traveller</span>
+        <span class="detail">A long-form historical storyworld still being built. It will arrive when it is ready.</span>
+        <span class="status">In progress</span>
+      </div>
+    </main>
+
+    <footer>
+      <div class="doors" aria-label="Other doors">
+        <a href="https://jaymethunt.com">Jayme Hunt</a>
+        <a href="https://theperfectthingy.com">The Perfect Thingy</a>
+      </div>
+      <div>© 2026 Jayme Hunt · akaJay</div>
+    </footer>
+  </div>
+</body>
+</html>
