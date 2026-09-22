@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>akaJay — Studio beta</title>
+  <meta name="description" content="akaJay: paintings, books, stories, objects, experiments, and whatever else gets made here.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#252729">
+  <style>
+    :root{
+      --steel:#252729;
+      --steel-2:#333638;
+      --steel-3:#44484a;
+      --edge:#8d9091;
+      --paper:#eee8de;
+      --ink:#181716;
+      --muted:#b8b4ad;
+      --oak-1:#d1ad7b;
+      --oak-2:#b98752;
+      --oak-3:#8f663f;
+      --mahogany-1:#7b493f;
+      --mahogany-2:#5b312d;
+      --mahogany-3:#3c211f;
+      --cream:#f3ede3;
+      --shadow:rgba(0,0,0,.35);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--cream);
+      background:var(--steel);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px) 0 0/72px 72px,
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px) 0 0/72px 72px,
+        var(--steel);
+    }
+
+    a{color:inherit}
+    .shell{width:min(1180px, calc(100% - 28px)); margin:0 auto}
+
+    .toprail{
+      margin-top:18px;
+      min-height:34px;
+      border:1px solid #161718;
+      border-bottom-color:#5c6062;
+      background:
+        linear-gradient(180deg, #4a4e50 0%, #303335 46%, #222426 52%, #393c3e 100%);
+      box-shadow:0 4px 12px var(--shadow);
+      position:relative;
+    }
+    .toprail::before,.toprail::after{
+      content:"";
+      position:absolute;
+      top:9px;
+      width:12px;height:12px;
+      border-radius:50%;
+      background:radial-gradient(circle at 35% 35%, #c7c9c8 0 12%, #717475 18% 42%, #252729 48% 100%);
+    }
+    .toprail::before{left:14px}
+    .toprail::after{right:14px}
+
+    header{
+      padding:clamp(3rem, 8vw, 6rem) clamp(10px, 3vw, 28px) 3rem;
+      display:grid;
+      grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);
+      gap:2rem;
+      align-items:end;
+    }
+
+    .eyebrow,.surface-label,.status,.drawer-label{
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.17em;
+      text-transform:uppercase;
+    }
+    .eyebrow{color:#c8cac9;margin:0 0 1rem}
+
+    h1{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(4.5rem, 12vw, 9rem);
+      line-height:.82;
+      letter-spacing:-.065em;
+      font-weight:400;
+    }
+    h1 .aka{
+      color:var(--oak-1);
+      font-style:italic;
+      font-weight:400;
+    }
+
+    .intro{
+      margin:1.4rem 0 0;
+      max-width:48rem;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(1.25rem, 2.8vw, 1.8rem);
+      line-height:1.5;
+      color:#f2ede6;
+    }
+
+    .bench-note{
+      border-left:2px solid var(--edge);
+      padding:0 0 .15rem 1.25rem;
+      color:#d1cec7;
+      line-height:1.7;
+      max-width:27rem;
+      justify-self:end;
+    }
+    .bench-note strong{
+      display:block;
+      margin-bottom:.4rem;
+      color:white;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.25rem;
+      font-weight:400;
+    }
+
+    main{padding:0 0 4rem}
+
+    .surface{
+      margin:0 0 1.1rem;
+      border:1px solid #171819;
+      box-shadow:0 20px 42px rgba(0,0,0,.28);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .surface-head{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      align-items:center;
+      padding:.82rem 1rem;
+      background:
+        linear-gradient(180deg, #45494b, #2d3032 52%, #222426);
+      border-bottom:1px solid #151617;
+    }
+    .surface-label{color:#efefec}
+    .surface-meaning{
+      color:#aeb0ad;
+      font-size:.85rem;
+      text-align:right;
+    }
+
+    .wood{
+      padding:clamp(1.25rem, 3vw, 2.2rem);
+      color:var(--ink);
+      position:relative;
+    }
+
+    .oak .wood{
+      background:
+        repeating-linear-gradient(4deg, rgba(80,48,22,.12) 0 1px, transparent 1px 9px),
+        repeating-linear-gradient(176deg, rgba(255,255,255,.08) 0 2px, transparent 2px 16px),
+        linear-gradient(105deg, var(--oak-1), #c99f6a 45%, var(--oak-2) 100%);
+    }
+
+    .mahogany .wood{
+      color:#f4e9dd;
+      background:
+        repeating-linear-gradient(2deg, rgba(25,8,7,.25) 0 1px, transparent 1px 11px),
+        repeating-linear-gradient(178deg, rgba(255,255,255,.035) 0 1px, transparent 1px 17px),
+        linear-gradient(110deg, var(--mahogany-1), var(--mahogany-2) 52%, var(--mahogany-3));
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+    }
+
+    .card{
+      display:block;
+      min-height:220px;
+      padding:1.3rem 1.35rem 1.4rem;
+      text-decoration:none;
+      border:1px solid rgba(31,25,19,.35);
+      background:rgba(244,238,226,.78);
+      box-shadow:0 8px 18px rgba(40,24,12,.13);
+      transition:transform .16s ease, box-shadow .16s ease;
+      position:relative;
+    }
+    a.card:hover,a.card:focus-visible{
+      transform:translateY(-3px);
+      box-shadow:0 13px 25px rgba(35,20,10,.18);
+    }
+    a.card:focus-visible{outline:3px solid rgba(255,255,255,.8);outline-offset:3px}
+
+    .mahogany .card{
+      color:#f7eee3;
+      border-color:rgba(230,206,184,.22);
+      background:rgba(39,20,18,.42);
+      box-shadow:0 8px 18px rgba(0,0,0,.16);
+    }
+
+    .card .kicker{
+      display:block;
+      margin-bottom:2rem;
+      font-size:.69rem;
+      font-weight:850;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      opacity:.7;
+    }
+    .card h2{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(2rem,4vw,3rem);
+      line-height:1.03;
+      font-weight:400;
+    }
+    .card p{
+      margin:.8rem 0 0;
+      max-width:35rem;
+      line-height:1.62;
+      font-size:.96rem;
+    }
+    .card .status{
+      display:inline-block;
+      margin-top:1.2rem;
+      border-top:1px solid currentColor;
+      padding-top:.5rem;
+      opacity:.72;
+    }
+
+    .slot{
+      margin:0 18px 1.1rem;
+      border-left:8px solid #161718;
+      border-right:8px solid #161718;
+      background:#0d0e0f;
+      box-shadow:inset 0 8px 20px rgba(0,0,0,.75);
+      padding:1.25rem clamp(1rem,3vw,2rem);
+    }
+    .slot-inner{
+      border:1px solid #26282a;
+      background:
+        linear-gradient(135deg, rgba(124,73,63,.24), rgba(185,135,82,.13)),
+        #151617;
+      padding:1.15rem 1.25rem;
+      display:flex;
+      gap:1.2rem;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .slot-copy strong{
+      display:block;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.45rem;
+      font-weight:400;
+      margin-bottom:.2rem;
+    }
+    .slot-copy span{color:#b8b8b2;line-height:1.5}
+    .slot .status{color:var(--oak-1);white-space:nowrap}
+
+    .drawers{
+      margin-top:1.1rem;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.75rem;
+    }
+    .drawer{
+      min-height:84px;
+      padding:1rem 1.05rem;
+      border:1px solid #18191a;
+      background:
+        linear-gradient(180deg,#3d4143,#2b2e30 48%,#202224 50%,#333638);
+      box-shadow:0 7px 13px rgba(0,0,0,.25);
+      position:relative;
+    }
+    .drawer::after{
+      content:"";
+      position:absolute;
+      left:50%; top:13px;
+      width:54px; height:7px;
+      transform:translateX(-50%);
+      border-radius:6px;
+      background:linear-gradient(180deg,#a0a3a3,#55595a);
+      border:1px solid #222;
+    }
+    .drawer-label{
+      display:block;
+      padding-top:18px;
+      color:#dad8d2;
+      text-align:center;
+    }
+
+    footer{
+      margin:3rem 0 2rem;
+      padding:1.3rem 0 0;
+      border-top:1px solid #55595a;
+      color:#aaa9a4;
+      font-size:.82rem;
+      line-height:1.7;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:1rem;
+    }
+    .doors{display:flex;flex-wrap:wrap;gap:.7rem 1.4rem}
+    .doors a{text-underline-offset:.2em}
+
+    @media(max-width:760px){
+      header{grid-template-columns:1fr}
+      .bench-note{justify-self:start}
+      .cards{grid-template-columns:1fr}
+      .drawers{grid-template-columns:1fr}
+      .surface-head{align-items:flex-start;flex-direction:column;gap:.3rem}
+      .surface-meaning{text-align:left}
+      .slot{margin-left:8px;margin-right:8px}
+      .slot-inner{align-items:flex-start;flex-direction:column}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important}
+      .card{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="toprail" aria-hidden="true"></div>
+
+    <header>
+      <div>
+        <p class="eyebrow">The workbench</p>
+        <h1><span class="aka">aka</span>Jay</h1>
+        <p class="intro">Paintings. Books. Stories. Things made with a 3D printer. And whatever else ends up on the workbench.</p>
+      </div>
+      <div class="bench-note">
+        <strong>Made here.</strong>
+        Some work happens out in the light. Some happens further inward. Some is still tucked safely between the two.
+      </div>
+    </header>
+
+    <main aria-label="Creative work">
+
+      <section class="surface oak" aria-labelledby="oak-title">
+        <div class="surface-head">
+          <span class="surface-label" id="oak-title">Oak surface</span>
+          <span class="surface-meaning">outward making · paint · objects · hands-on work</span>
+        </div>
+        <div class="wood">
+          <div class="cards">
+            <a class="card" href="https://fineartamerica.com/profiles/1-jayme-hunt/shop">
+              <span class="kicker">Watercolor &amp; art</span>
+              <h2>Paintings</h2>
+              <p>Original watercolor work, fine-art prints, greeting cards, and selected pieces that have made their way out into the world.</p>
+              <span class="status">Open the gallery →</span>
+            </a>
+
+            <div class="card">
+              <span class="kicker">3D-printed studio objects</span>
+              <h2>Paint palettes</h2>
+              <p>Physical things made for the painting side of the studio. This drawer is here now; what eventually fills it can grow with the work.</p>
+              <span class="status">Coming to the bench</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slot" aria-label="Work in progress">
+        <div class="slot-inner">
+          <div class="slot-copy">
+            <strong>Traveller</strong>
+            <span>Still becoming. Not hidden away—just living in the protected slot until it is ready for the work surface again.</span>
+          </div>
+          <span class="status">In progress</span>
+        </div>
+      </section>
+
+      <section class="surface mahogany" aria-labelledby="mahogany-title">
+        <div class="surface-head">
+          <span class="surface-label" id="mahogany-title">Mahogany surface</span>
+          <span class="surface-meaning">inward making · writing · journals · books · computer work</span>
+        </div>
+        <div class="wood">
+          <div class="cards">
+            <a class="card" href="https://www.lulu.com/shop/jayme-hunt-and-molly-spirit-guide/lessons-from-spirit/paperback/product-45427wn.html?page=1&amp;pageSize=4">
+              <span class="kicker">Book</span>
+              <h2>Lessons from Spirit</h2>
+              <p><em>The Five Core Lessons Everyone Needs to Learn</em>, by Molly (Spirit Guide) &amp; Jayme Hunt.</p>
+              <span class="status">Find the book →</span>
+            </a>
+
+            <div class="card">
+              <span class="kicker">The writing side</span>
+              <h2>What comes next</h2>
+              <p>Books, journals, stories, research, and anything else that begins on the quieter surface before it is ready to move outward.</p>
+              <span class="status">Room to grow</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="drawers" aria-label="Studio drawers">
+        <div class="drawer"><span class="drawer-label">Experiments</span></div>
+        <div class="drawer"><span class="drawer-label">Things not finished yet</span></div>
+        <div class="drawer"><span class="drawer-label">Whatever shows up next</span></div>
+      </div>
+
+    </main>
+
+    <footer>
+      <div class="doors" aria-label="Other doors">
+        <a href="https://jaymethunt.com">Jayme Hunt</a>
+        <a href="https://theperfectthingy.com">The Perfect Thingy</a>
+      </div>
+      <div>© 2026 Jayme Hunt · akaJay · studio beta</div>
+    </footer>
+  </div>
+</body>
+</html>
