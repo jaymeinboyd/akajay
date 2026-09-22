@@ -47,10 +47,13 @@
       margin-top:18px;
       min-height:34px;
       border:1px solid #161718;
-      border-bottom-color:#5c6062;
+      border-bottom-color:#7f8384;
       background:
-        linear-gradient(180deg, #4a4e50 0%, #303335 46%, #222426 52%, #393c3e 100%);
-      box-shadow:0 4px 12px var(--shadow);
+        linear-gradient(180deg, #5a5e60 0%, #343739 42%, #1e2022 52%, #3e4244 86%, #7b7f80 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.26),
+        inset 0 -1px 0 rgba(255,255,255,.12),
+        0 4px 12px var(--shadow);
       position:relative;
     }
     .toprail::before,.toprail::after{
@@ -125,9 +128,22 @@
     .surface{
       margin:0 0 1.1rem;
       border:1px solid #171819;
-      box-shadow:0 20px 42px rgba(0,0,0,.28);
+      box-shadow:
+        inset 0 1px 0 rgba(224,227,227,.08),
+        0 20px 42px rgba(0,0,0,.28);
       overflow:hidden;
       position:relative;
+    }
+    .surface::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:40px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(220,223,223,.55) 12%, rgba(255,255,255,.68) 50%, rgba(220,223,223,.55) 88%, transparent);
+      pointer-events:none;
+      opacity:.55;
     }
 
     .surface-head{
@@ -137,9 +153,30 @@
       align-items:center;
       padding:.82rem 1rem;
       background:
-        linear-gradient(180deg, #45494b, #2d3032 52%, #222426);
+        linear-gradient(180deg, #4e5254 0%, #303335 48%, #202224 58%, #35393b 100%);
       border-bottom:1px solid #151617;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        inset 0 -2px 0 rgba(192,196,197,.10);
+      position:relative;
     }
+    .surface-head::before,
+    .surface-head::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      width:8px;
+      height:8px;
+      margin-top:-4px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 35% 30%, #f0f1f0 0 11%, #a6a9aa 18% 38%, #4e5152 45% 68%, #202223 75% 100%);
+      box-shadow:0 0 0 1px rgba(0,0,0,.55);
+      opacity:.9;
+    }
+    .surface-head::before{left:8px}
+    .surface-head::after{right:8px}
+    .surface-head .surface-label{padding-left:12px}
     .surface-label{color:#efefec}
     .surface-meaning{
       color:#aeb0ad;
@@ -272,15 +309,39 @@
       box-shadow:0 7px 13px rgba(0,0,0,.25);
       position:relative;
     }
+    .drawer::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:8px;
+      width:98px;
+      height:20px;
+      transform:translateX(-50%);
+      border-radius:3px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.18)),
+        #2c2f30;
+      border:1px solid #161718;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+    }
     .drawer::after{
       content:"";
       position:absolute;
-      left:50%; top:13px;
-      width:54px; height:7px;
+      left:50%; top:12px;
+      width:76px; height:10px;
       transform:translateX(-50%);
-      border-radius:6px;
-      background:linear-gradient(180deg,#a0a3a3,#55595a);
-      border:1px solid #222;
+      border-radius:8px;
+      background:
+        linear-gradient(180deg,
+          #f1f2f1 0%,
+          #c5c8c8 18%,
+          #7d8182 48%,
+          #dadcdb 62%,
+          #636768 100%);
+      border:1px solid #3d4041;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.85),
+        0 1px 2px rgba(0,0,0,.65);
     }
     .drawer-label{
       display:block;
@@ -329,7 +390,7 @@
       <div>
         <p class="eyebrow">The workbench</p>
         <h1><span class="aka">aka</span>Jay</h1>
-        <p class="intro">Paintings. Books. Stories. Things made with a 3D printer. And whatever else ends up on the workbench.</p>
+        <p class="intro">Paintings. Books. Stories. 3D print creations. And whatever else ends up on the workbench.</p>
       </div>
       <div class="bench-note">
         <strong>Made here.</strong>
@@ -342,7 +403,7 @@
       <section class="surface oak" aria-labelledby="oak-title">
         <div class="surface-head">
           <span class="surface-label" id="oak-title">Oak surface</span>
-          <span class="surface-meaning">outward making · paint · objects · hands-on work</span>
+          
         </div>
         <div class="wood">
           <div class="cards">
@@ -354,9 +415,9 @@
             </a>
 
             <div class="card">
-              <span class="kicker">3D-printed studio objects</span>
+              <span class="kicker">3D print creations</span>
               <h2>Paint palettes</h2>
-              <p>Physical things made for the painting side of the studio. This drawer is here now; what eventually fills it can grow with the work.</p>
+              <p>Useful little studio things, beginning with paint palettes. More can land here as they are made.</p>
               <span class="status">Coming to the bench</span>
             </div>
           </div>
@@ -367,7 +428,7 @@
         <div class="slot-inner">
           <div class="slot-copy">
             <strong>Traveller</strong>
-            <span>Still becoming. Not hidden away—just living in the protected slot until it is ready for the work surface again.</span>
+            <span>Still becoming … just living in the protected slot until it’s ready for the work surface again.</span>
           </div>
           <span class="status">In progress</span>
         </div>
@@ -376,7 +437,7 @@
       <section class="surface mahogany" aria-labelledby="mahogany-title">
         <div class="surface-head">
           <span class="surface-label" id="mahogany-title">Mahogany surface</span>
-          <span class="surface-meaning">inward making · writing · journals · books · computer work</span>
+          
         </div>
         <div class="wood">
           <div class="cards">
@@ -390,7 +451,7 @@
             <div class="card">
               <span class="kicker">The writing side</span>
               <h2>What comes next</h2>
-              <p>Books, journals, stories, research, and anything else that begins on the quieter surface before it is ready to move outward.</p>
+              <p>Books, journals, stories, research, and other work still taking shape.</p>
               <span class="status">Room to grow</span>
             </div>
           </div>
